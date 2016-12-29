@@ -5,17 +5,16 @@ var headerTabSel = '._3cz [role="tablist"]'
 
 function gatherGroups () {
   var groups = [...document.querySelectorAll(groupListSel)]
-  return groups.map(group => {
-    var linkElem = group.querySelector(groupNameSel)
-    var name = linkElem.innerText
-    var url = linkElem.getAttribute('href')
-    var memberCount = getMemberCount(group)
-    return {
-      name: name,
-      members: memberCount,
-      url: url
-    }
-  })
+  return groups
+    .map(group => [group, group.querySelector(groupNameSel)])
+    .filter(([group, linkElem]) => group && linkElem)
+    .map(([group, linkElem]) => {
+      return {
+        name: linkElem.innerText,
+        members: getMemberCount(group),
+        url: linkElem.getAttribute('href')
+      }
+    })
 }
 
 function getMemberCount (group) {
