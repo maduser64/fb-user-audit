@@ -16,5 +16,9 @@
       "js": ["groups.js"]
     }
   ],
+  "background": {
+    "scripts": ["action.js"]
+  },
+  "browser_action": {},
   "manifest_version": 2
 }
