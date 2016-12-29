@@ -1,0 +1,20 @@
+{
+  "name": "FB User Audit",
+  "description": "Get quick stats on users applying to your Facebook groups.",
+  "version": "0.0.0",
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.facebook.com/groups/*/requests/*"],
+      "js": ["requests.js"],
+      "css": ["requests.css"]
+    },
+    {
+      "matches": ["https://www.facebook.com/*/groups"],
+      "js": ["groups.js"]
+    }
+  ],
+  "manifest_version": 2
+}
